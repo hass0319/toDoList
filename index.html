@@ -18,30 +18,20 @@
     </header>
 
     <main>
-      <form class="main-form">
-        <input type="text" class="main-input" id="addText" placeholder="Cleaning ...">
-        <button type="submit" class="main-btn"> ADD</button>
-      </form>
+      <div class="container">
+        <h2 class="title">My To Do List</h2>
+        <div class="inputArea">
+          <input type="text" class="inputT" id="addText" placeholder="Cleaning ...">
+          <span class="add-btn"> ADD</span>
+        </div>
+      </div>
 
       <div class="list-container">
-        <div class=" task-form">
-          <form>
-            <input type="checkbox">
-            <label>Clean bedroom</label>
-          </form>
-        </div>
-        <div class="task-form">
-          <form>
-            <input type="checkbox">
-            <label>Make Dinner</label>
-          </form>
-        </div>
-        <div class="task-form">
-          <form>
-            <input type="checkbox">
-            <label>Go to GYM</label>
-          </form>
-        </div>
+        <ul class="task-list" id="tList">
+          <li>Make Room</li>
+          <li>Go Gym</li>
+          <li>Make Dinner</li>
+        </ul>
       </div>
     </main>
 
