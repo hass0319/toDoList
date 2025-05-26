@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TO-DO</title>
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./app.js">
+    <script src="./app.js" async></script>
   </head>
 
   <body>
@@ -22,7 +22,7 @@
         <h2 class="title">My To Do List</h2>
         <div class="inputArea">
           <input type="text" class="inputT" id="addText" placeholder="Cleaning ...">
-          <span class="add-btn"> ADD</span>
+          <span onclick="createTask()" class="add-btn"> ADD</span>
         </div>
       </div>
 
