@@ -18,18 +18,31 @@ function createTask() {
 
 function addTask(task) {
   const newLine = document.createElement("li");
+  newLine.addEventListener("click", (event) => {
+    // Prevent toggling if clicking the checkbox or delete button
+    if (
+      event.target.tagName.toLowerCase() !== "input" &&
+      event.target.tagName.toLowerCase() !== "button"
+    ) {
+      checkbox.click();
+    }
+  });
 
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
+  checkbox.classList.add("task-checkbox");
   checkbox.checked = task.done;
   checkbox.addEventListener("change", () => {
     task.done = checkbox.checked;
-    updateTasks();
+    updateTask();
     newLine.classList.toggle("done", task.done);
   });
 
   const span = document.createElement("span");
   span.textContent = task.text;
+  span.addEventListener("click", () => {
+    checkbox.click();
+  });
 
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "\u00D7";

@@ -6,13 +6,11 @@
 }
 
 body {
-  /* width: 100%; */
   overflow-x: hidden;
 }
 
 nav {
-  background-color: aqua;
-  /* min-height: 20%; */
+  background-color: rgb(117, 141, 141);
   height: 30%;
   width: 100%;
   font-size: larger;
@@ -49,7 +47,7 @@ nav {
 .inputT {
   width: 100%;
   padding: 0 1rem;
-  border: 1px solid grey;
+  border: 3px solid grey;
   border-radius: 3px;
 }
 
@@ -63,17 +61,19 @@ nav {
 }
 
 .add-btn {
+  cursor: pointer;
   position:absolute;
-  right: 0;
+  right: 0.5%;
+  top: 10%;
   width: 5rem;
-  height: 100%;
+  height: 80%;
   border-radius: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: rgb(50, 57, 58);
-  background-color: rgb(98, 214, 237);
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  background-color: rgb(154, 210, 219);
+  transition: transform 0.3s ease-in-out, box-shadow 0.1s ease;
     box-shadow: -4px 0  4px rgba(0, 0, 0, 0.2);
 }
 
@@ -82,13 +82,13 @@ nav {
 }
 
 .add-btn:active{
-  transform: translateY(3px);
+  transform: scale(0.8) ;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .task-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: space-between;
   align-items: center;
   list-style: none;
@@ -105,6 +105,41 @@ li {
   border-radius: 10px;
   padding: 0.5rem;
   gap: 2rem;
+  cursor: pointer;
+}
+
+ul li:nth-child(odd) {
+  background: #756868;
+}
+
+li:hover {
+  box-shadow: 6px 6px 6px gray;
+  transition: all 0.4s;
+}
+
+.task-checkbox {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+li.done {
+  opacity: 50%;
+}
+
+li.done span{
+  text-decoration: line-through;
+}
+
+li.done .task-checkbox {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: larger;
 }
 
 
