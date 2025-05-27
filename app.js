@@ -9,36 +9,66 @@ function createTask() {
     return;
   }
 
-  addTaskToDom(inputValue);
-  saveTask(inputValue);
+  const task = { text: inputValue, done: false };
+  addTask(task);
+  saveTask(task);
 
   input.value = "";
 }
 
-function addTaskToDom(text) {
-  let newLine = document.createElement("li");
-  let newTask = document.createTextNode(text);
+function addTask(task) {
+  const newLine = document.createElement("li");
 
-  newLine.appendChild(newTask);
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.checked = task.done;
+  checkbox.addEventListener("change", () => {
+    task.done = checkbox.checked;
+    updateTasks();
+    newLine.classList.toggle("done", task.done);
+  });
+
+  const span = document.createElement("span");
+  span.textContent = task.text;
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "\u00D7";
+  deleteBtn.addEventListener("click", () => {
+    newLine.remove();
+    deleteTask(task);
+  });
+
+  newLine.appendChild(checkbox);
+  newLine.appendChild(span);
+  newLine.appendChild(deleteBtn);
+
   document.getElementById("tList").appendChild(newLine);
 }
 
-function saveTask(text) {
+function saveTask(task) {
   let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  tasks.push(text);
+  tasks.push(task);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function deleteTask(taskToDelete) {
+  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  const updated = tasks.filter((task) => task.text !== taskToDelete.text);
+  localStorage.setItem("tasks", JSON.stringify(updated));
+}
+
+function updateTask() {
+  const listItems = document.querySelectorAll("#tList li");
+  const tasks = Array.from(listItems).map((li) => ({
+    text: li.querySelector("span").textContent,
+    done: li.querySelector("input[type='checkbox']").checked,
+  }));
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function loadTask() {
   let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   tasks.forEach((task) => {
-    addTaskToDom(task);
+    addTask(task);
   });
-}
-
-let line = getElementByTagName("li");
-
-for (let i = 0; i < line.length; i++) {
-  let x = documnet.createTextNode("\u00D7");
-  let;
 }
