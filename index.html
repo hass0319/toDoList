@@ -7,21 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TO-DO</title>
     <link rel="stylesheet" href="./style.css">
-    <script src="./app.js" async></script>
+    <script src="./app.js" defer></script>
   </head>
 
   <body>
-    <header>
-      <nav>
-        <h3>To-DO Lister</h3>
-      </nav>
-    </header>
-
     <main>
+      <!-- <div class="main-container"> -->
       <div class="container">
         <h2 class="title">My To Do List</h2>
         <div class="inputArea">
-          <input type="text" class="inputT" id="addText" placeholder="Cleaning ...">
+          <input type="text" class="inputT" id="addText" placeholder="Lets Be Productive">
           <span onclick="createTask()" class="add-btn"> ADD</span>
         </div>
       </div>
@@ -30,6 +25,7 @@
         <ul class="task-list" id="tList">
         </ul>
       </div>
+      <!-- </div> -->
     </main>
 
   </body>

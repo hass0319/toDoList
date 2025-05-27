@@ -1,4 +1,16 @@
-document.addEventListener("DOMContentLoaded", loadTask);
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("addText");
+  // console.log("dom loaded");
+  input.addEventListener("keydown", (event) => {
+    // console.log("Key pressed:", event.key);
+    if (event.key === "Enter") {
+      event.preventDefault();
+      // console.log("creating..");
+      createTask();
+    }
+  });
+  loadTask();
+});
 
 function createTask() {
   const input = document.getElementById("addText");
@@ -18,15 +30,6 @@ function createTask() {
 
 function addTask(task) {
   const newLine = document.createElement("li");
-  newLine.addEventListener("click", (event) => {
-    // Prevent toggling if clicking the checkbox or delete button
-    if (
-      event.target.tagName.toLowerCase() !== "input" &&
-      event.target.tagName.toLowerCase() !== "button"
-    ) {
-      checkbox.click();
-    }
-  });
 
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
@@ -38,11 +41,18 @@ function addTask(task) {
     newLine.classList.toggle("done", task.done);
   });
 
+  newLine.addEventListener("click", (event) => {
+    // Prevent toggling if clicking the checkbox or delete button
+    if (
+      event.target.tagName.toLowerCase() !== "input" &&
+      event.target.tagName.toLowerCase() !== "button"
+    ) {
+      checkbox.click();
+    }
+  });
+
   const span = document.createElement("span");
   span.textContent = task.text;
-  span.addEventListener("click", () => {
-    checkbox.click();
-  });
 
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "\u00D7";

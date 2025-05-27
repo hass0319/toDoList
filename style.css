@@ -2,20 +2,27 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  width: 100%;
 }
 
 body {
   overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-nav {
-  background-color: rgb(117, 141, 141);
-  height: 30%;
-  width: 100%;
-  font-size: larger;
-  font-style: italic;
-  font-weight: bolder;
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  width: 50%;
+  height: auto;
+  box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 2rem;
   padding: 1rem;
 }
 
@@ -24,14 +31,15 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
   gap: 1rem;
-  padding-top: 2rem;
 }
 
 .title {
   display: flex;
   align-content: center;
   justify-content: center;
+  font-size: 3rem;
 }
 
 .inputArea {
@@ -39,7 +47,8 @@ nav {
   flex-direction: row;
   justify-content: center;
   height: 2rem;
-  width: 50%;
+  width: 90%;
+  min-width: 300px;
   border-radius: 10px;
   position: relative;
 }
@@ -47,8 +56,9 @@ nav {
 .inputT {
   width: 100%;
   padding: 0 1rem;
-  border: 3px solid grey;
-  border-radius: 3px;
+  background-color: #aeabab;
+  border: none;
+  border-radius: 10px;
 }
 
 .inputT:hover{
@@ -67,7 +77,7 @@ nav {
   top: 10%;
   width: 5rem;
   height: 80%;
-  border-radius: 3px;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,14 +96,21 @@ nav {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.list-container{
+  display:flex;
+  width: 90%;
+  min-width: 300px;
+}
+
 .task-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   list-style: none;
+  width: 100%;
   padding:1rem;
-  gap: 3rem;
+  gap: 1rem;
 }
 
 li {
@@ -101,25 +118,21 @@ li {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 2px solid rgb(95, 66, 35);
+  width: 100%;
   border-radius: 10px;
   padding: 0.5rem;
   gap: 2rem;
   cursor: pointer;
+  background: #f7f5f5;
 }
 
-ul li:nth-child(odd) {
-  background: #756868;
+li:nth-child(odd) {
+  background: #cec4c4;
 }
 
 li:hover {
   box-shadow: 6px 6px 6px gray;
   transition: all 0.4s;
-}
-
-.task-checkbox {
-  visibility: hidden;
-  pointer-events: none;
 }
 
 li.done {
@@ -130,9 +143,25 @@ li.done span{
   text-decoration: line-through;
 }
 
-li.done .task-checkbox {
-  visibility: visible;
-  pointer-events: auto;
+.task-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #ffecec;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.task-checkbox:checked::after {
+  content: '✔';
+  color: rgb(196, 116, 116);
+  font-size: 14px;
+  position: absolute;
+  top: 3px;
+  left: 2px;
 }
 
 button {
@@ -140,6 +169,7 @@ button {
   border: none;
   background: none;
   font-size: larger;
+  width: 10%;
 }
 
 
